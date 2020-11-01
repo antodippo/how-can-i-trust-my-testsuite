@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>How can I trust my testsuite? - Antonello D'Ippolito</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
+		<link rel="stylesheet" href="plugin/title-footer/title-footer.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				
+				<section>
+					<h2>How can I trust<br/>my testsuite?</h2>
+					<h5>Antonello D'Ippolito</h5>
+				</section>
+
+				<section data-auto-animate>
+					<img class="r-stretch" src="img/audrey.png">
+				</section>
+
+				<section data-auto-animate>
+					<img class="r-stretch" src="img/monster.png">
+				</section>
+
+				<section>
+					<h2>CIAO!</h2>
+					<h3>Antonello D'Ippolito</h3>
+					<small>Software engineer, Scrum master</small>
+					<p>@antodippo</p>
+				</section>
+
+				<section>
+					<p>Sher<b>code</b> Holmes</p>
+					<img class="r-stretch" src="img/sherlock.png">
+				</section>
+
+				<section>
+					<h2>Test coverage</h2>
+				</section>
+
+				<section>
+					<blockquote cite="Wikipedia">
+						<b>Test coverage</b> is a measure used to describe the degree to which the source 
+						code of a program is executed when a particular test suite runs
+					</blockquote>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-line-numbers="|3|5-6|7-9|" data-trim>
+class NuclearReactor
+{
+  public function isDangerous(int $temperature): bool
+  {
+    if ($temperature >= 1000) {
+	  return true;
+    } else {
+	  return false;
+    }
+  }
+}
+					</code></pre>
+					<pre data-id="code-animation"><code class="php" data-line-numbers="|6|7|" data-trim>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerous(): void
+  {
+    $nuclearReactor = new NuclearReactor();
+    $this->assertFalse($nuclearReactor->isDangerous(500));
+    $this->assertTrue($nuclearReactor->isDangerous(2000));
+  }
+}
+					</code></pre>
+					<small>from 
+						<a href="https://medium.com/appsflyer/tests-coverage-is-dead-long-live-mutation-testing-7fd61020330e" 
+						target="_blank">"Tests Coverage is Dead" by Yotam Kadishay</a>
+					</small>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-line-numbers="5" data-trim>
+class NuclearReactor
+{
+  public function isDangerous(int $temperature): bool
+  {
+    if ($temperature > 1000) {
+	  return true;
+    } else {
+	  return false;
+    }
+  }
+}
+					</code></pre>
+
+					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerous(): void
+  {
+    $nuclearReactor = new NuclearReactor();
+    $this->assertFalse($nuclearReactor->isDangerous(500));
+    $this->assertTrue($nuclearReactor->isDangerous(2000));
+  }
+}
+					</code></pre>
+					<small>from 
+						<a href="https://medium.com/appsflyer/tests-coverage-is-dead-long-live-mutation-testing-7fd61020330e" 
+						target="_blank">"Tests Coverage is Dead" by Yotam Kadishay</a>
+					</small>
+				</section>
+
+				<section>
+					<img src="img/pipeline.png">
+				</section>
+
+				<section data-background="img/explosion.gif"></section>
+
+				<section>
+					<img src="img/kent.png">
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/sherlock.png">
+				</section>
+
+				<section>
+					<h3>Cyclomatic complexity<br/> and<br/> CRAP index</h3>
+				</section>
+
+				<section>
+					PHPUnit dashboard<br/>
+					<img src="img/comp-cover-phpunit.png">
+					<img src="img/CRAP-phpunit.png">
+				</section>
+
+				<section>
+					<blockquote cite="Wikipedia">
+						<b>Cyclomatic complexity</b> is a quantitative measure of the number of 
+						linearly independent paths through a program's source code
+					</blockquote>
+				</section>
+
+				<section>
+					<h3>CRAP index</h3>
+					<p>
+						\begin{align}
+						C.R.A.P. &= comp(m)^2 · (1 - \frac{cov(m)}{100})^3 + comp(m)
+					  	\end{align} 
+					</p>
+					<small>from <a target="_blank" href="https://www.artima.com/weblogs/viewpost.jsp?thread=210575">
+					"Pardon My French, But This Code Is C.R.A.P." by Alberto Savoia</a></small>
+					<aside class="notes">
+						Change Risk Analysis and Predictions
+					</aside>
+				</section>
+
+				<section>
+					<img src="img/complexity-coverage.png">
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/sherlock.png">
+					<blockquote cite="">Not all the units of code</br>are equally important</blockquote>
+				</section>
+
+				<section>
+					<blockquote cite="Wikipedia">
+						<b>Churn</b> is a metric representing</br>how often a unit of code is modified
+					</br>(ex. number of commits)
+				</blockquote>
+				<small>from <a target="_blank" href="https://www.stickyminds.com/article/getting-empirical-about-refactoring">
+						"Getting Empirical about Refactoring" by Michael Feathers</a></small>
+				</section>
+
+				<section>
+					<img src="img/churn.jpg">
+				</section>
+
+				<section>
+					<img src="img/complexity-churn.png">
+				</section>
+
+				<section>
+					<img src="img/churn-php.png">
+					<p><a target="_blank" href="https://github.com/bmitch/churn-php">https://github.com/bmitch/churn-php</a></p>
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/sherlock.png">
+					<blockquote cite="">
+						Better, but it's still about coverage,</br>
+						not the <b>quality</b> of the tests
+					</blockquote>
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/mutant.png"> 
+					<p>Mutation testing</p>
+				</section>
+
+				<section>
+					If you make a change that alters the meaning of the code, will one of your tests detect it?
+				</section>
+
+				<section>
+					<ul>
+						<li> Create a <b>mutant</b>
+						<li> If a test fails -> <b><span style="color:green">mutant killed</span></b>
+						<li> If no test fails -> <b><span style="color:red">mutant escaped</span></b>
+					</ul>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-line-numbers="|5" data-trim>
+class NuclearReactor
+{
+  public function isDangerous(int $temperature): bool
+  {
+    if ($temperature >= 1000) {
+	  return true;
+    } else {
+	  return false;
+    }
+  }
+}
+					</code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-line-numbers="5" data-trim>
+class NuclearReactor
+{
+  public function isDangerous(int $temperature): bool
+  {
+    if ($temperature > 1000) {
+	  return true;
+    } else {
+	  return false;
+    }
+  }
+}
+					</code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<img src="img/infection-logo.png" width="300"><br/>
+					Infection - PHP Mutation Testing Framework<br/>
+					<a href="https://infection.github.io/" target="_blank">https://infection.github.io/</a>
+				</section>
+
+				<section data-auto-animate>
+					<img width="300" src="img/phpunit.png"> <br/>
+					<img width="300" src="img/phpspec.png"> <br/>
+					<img width="400" src="img/codeception.png">
+				</section>
+
+				<section>
+					<div class="r-stack r-stretch">
+						<h2>Live coding</h2>
+						<p class="fragment"><br/><br/><br/>... is risky, so I won't do it</p>
+						<img class="fragment" src="img/infection1.png">
+						<img class="fragment" src="img/infection2.png">
+					</div>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerous(): void
+  {
+    $nuclearReactor = new NuclearReactor();
+    $this->assertFalse($nuclearReactor->isDangerous(500));
+    $this->assertTrue($nuclearReactor->isDangerous(2000));
+  }
+}
+					</code></pre>
+					<small><a href="https://github.com/antodippo/php-testing-playground" target="_blaak">
+						https://github.com/antodippo/php-testing-playground</a></small>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerous(): void
+  {
+    $nuclearReactor = new NuclearReactor();
+    $this->assertFalse($nuclearReactor->isDangerous(500));
+    $this->assertTrue($nuclearReactor->isDangerous(1000));
+    $this->assertTrue($nuclearReactor->isDangerous(2000));
+  }
+}
+					</code></pre>
+					<small><a href="https://github.com/antodippo/php-testing-playground" target="_blaak">
+						https://github.com/antodippo/php-testing-playground</a></small>
+				</section>
+
+				<section>
+					<iframe width="800" height="600"
+						data-src="https://infection.github.io/guide/mutators.html" 
+						data-preload>
+					</iframe>
+					<small>
+						<a href="https://infection.github.io/guide/mutators.html" target="_blank">https://infection.github.io/guide/mutators.html</a>
+					</small>
+				</section>
+
+				<section>
+					<table>
+						<tr>
+							<td width="450" style="font-size: 27px;">
+								<h3>PROS</h3>
+								<ul>
+									<li class="fragment">Easy to setup and use</li>
+									<li class="fragment">Could spot critical bugs</li>
+									<li class="fragment">Improves your testing skills</li>
+								</ul>
+							</td>	
+							<td width="450" style="font-size: 27px;">
+								<h3>CONS</h3>
+								<ul>
+									<li class="fragment">Slower than other testing tools</li>
+									<li class="fragment">Can't merge different tools results</li>
+									<li class="fragment">Some mutants are harmless</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>How to use it?</h3>
+					<p class="fragment">While developing, on a small scope</p>
+					<p class="fragment">Setting a minimum MSI in pipeline</p>
+					<p class="fragment">To assess the effectivness of a testsuite!</p>
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/sherlock.png">
+					<blockquote cite="">Cool!<br/>But how can I improve<br/>the quality of my tests?</blockquote>
+				</section>
+
+				<section>
+					<h3>Property testing</h3>
+				</section>
+
+				<section>
+					<blockquote cite="Wikipedia">
+						The idea behind <b>property based testing</b> is to write specifications for input and output 
+						and then let the testing framework generate thousands of assertions to verify it.
+					</blockquote>
+					<small>from
+						<a href="https://www.codementor.io/@lmuzinic/how-good-is-your-test-suite-g93tx6qot#what-is-property-based-testing"
+							target="_blank">How Good Is Your Test Suite? by Luka Muzinic</a>
+					</small>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerous(): void
+  {
+    $nuclearReactor = new NuclearReactor();
+    $this->assertFalse($nuclearReactor->isDangerous(500));
+    $this->assertTrue($nuclearReactor->isDangerous(1000));
+    $this->assertTrue($nuclearReactor->isDangerous(2000));
+  }
+}
+					</code></pre>
+				</section>
+
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers="|5-8|10-13">
+public function testIsDangerousProperties(): void
+{
+  $nuclearReactor = new NuclearReactor();
+
+  $this->forAll(Generator\choose(0, 999))
+    ->then(function (int $temp) use ($nuclearReactor) {
+      $this->assertFalse($nuclearReactor->isDangerous($temp));
+    });
+
+  $this->forAll(Generator\choose(1000, 99999))
+    ->then(function (int $temp) use ($nuclearReactor) {
+      $this->assertTrue($nuclearReactor->isDangerous($temp));
+    });
+}
+					</code></pre>
+					<small>
+						<a href="https://github.com/giorgiosironi/eris" target="_blank">https://github.com/giorgiosironi/eris</a>
+					</small>
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/sherlock.png">
+					<blockquote cite="">Ok, I have the tools, now what?</blockquote>
+				</section>
+
+				<section>
+					<h3>Tools are never the final answer!</h3>
+					<p class="fragment">Ship frequently</p>
+					<p class="fragment">Monitor</p>
+					<p class="fragment">Take <span class="fragment highlight-red">educated</span> risks!</p>
+					<p class="fragment">Learn from failures</p>
+				</section>
+
+				<section>
+					<h3>Why?</h3>
+					<p class="fragment">Reduces cost of change</p>
+					<p class="fragment">Enables agility: ship and learn</p>
+					<p class="fragment">Short feedback loop</p>
+				</section>
+
+				<section data-auto-animate>
+					<h2>THANKS!</h2>
+					<img width="250px" src="img/twitter-qr.png"><br/>
+					<small>
+						<a>Antonello D'Ippolito</a> | 
+						<a href="https://twitter.com/antodippo" target="_blaak">twitter.com/antodippo</a> | 
+						<a href="https://antodippo.com" target="_blaak">antodippo.com</a>
+					</small>
+					<small>
+						Try Infection, Eris and other testing tools here:<br/>
+						<a href="https://github.com/antodippo/php-testing-playground" target="_blaak">
+							https://github.com/antodippo/php-testing-playground</a>
+					</small>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				math: {
+					mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+					config: 'TeX-AMS_HTML-full',
+					// pass other options into `MathJax.Hub.Config()`
+					TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ],
+				dependencies:
+				[
+					{ 
+						src: 'plugin/title-footer/title-footer.js', 
+						async: true, 
+						callback: function() 
+						{ title_footer.initialize('How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo'); } 
+					}
+				]
+			});
+		</script>
+	</body>
+</html>
