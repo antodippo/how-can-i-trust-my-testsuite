@@ -34,7 +34,8 @@
 				<section>
 					<h2>CIAO!</h2>
 					<h3>Antonello D'Ippolito</h3>
-					<small>Software engineer, Scrum master</small>
+					<small>Software engineer</small></br>
+					<img src="img/mollie.png">
 					<p>@antodippo</p>
 				</section>
 
@@ -211,6 +212,17 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
+					<h3>Have you ever used</br> mutation testing?</h3>
+					Go to menti.com and use the code 6096 4377 </br>
+					OR scan</br>
+					<img src="img/qr1.png" width="200"> 
+				</section>
+
+				<section>
+					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/embed/22d10a6569885b9daa850250b6f1cc7e/3a608a0ad33a' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+				</section>
+
+				<section>
 					<ul>
 						<li> Create a <b>mutant</b>
 						<li> If a test fails -> <b><span style="color:green">mutant killed</span></b>
@@ -266,7 +278,7 @@ class NuclearReactor
 					<div class="r-stack r-stretch">
 						<h2>Live coding</h2>
 						<p class="fragment"><br/><br/><br/>... is risky, so I won't do it</p>
-						<img class="fragment" src="img/infection1.png">
+						<img class="fragment" src="img/infection1.png" height="600">
 						<img class="fragment" src="img/infection2.png">
 					</div>
 				</section>
@@ -339,66 +351,16 @@ class NuclearReactorTest extends TestCase
 
 				<section>
 					<h3>How to use it?</h3>
-					<p class="fragment">While developing, on a small scope</p>
-					<p class="fragment">Setting a minimum MSI in pipeline</p>
 					<p class="fragment">To assess the effectivness of a testsuite!</p>
-				</section>
-
-				<section>
-					<img class="r-stretch" src="img/sherlock.png">
-					<blockquote cite="">Cool!<br/>But how can I improve<br/>the quality of my tests?</blockquote>
-				</section>
-
-				<section>
-					<h3>Property testing</h3>
-				</section>
-
-				<section>
-					<blockquote cite="Wikipedia">
-						The idea behind <b>property based testing</b> is to write specifications for input and output 
-						and then let the testing framework generate thousands of assertions to verify it.
-					</blockquote>
-					<small>from
-						<a href="https://www.codementor.io/@lmuzinic/how-good-is-your-test-suite-g93tx6qot#what-is-property-based-testing"
-							target="_blank">How Good Is Your Test Suite? by Luka Muzinic</a>
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers>
-class NuclearReactorTest extends TestCase
-{
-  public function testIsDangerous(): void
-  {
-    $nuclearReactor = new NuclearReactor();
-    $this->assertFalse($nuclearReactor->isDangerous(500));
-    $this->assertTrue($nuclearReactor->isDangerous(1000));
-    $this->assertTrue($nuclearReactor->isDangerous(2000));
-  }
-}
+					<p class="fragment">Setting a minimum MSI in pipeline</p>
+					<p class="fragment">While developing, on a small scope</p>
+					<pre class="fragment" data-id="code-animation"><code class="php" data-trim>
+						CHANGED_FILES=$(git diff origin/master --diff-filter=AM --name-only | grep src/ | paste -sd "," -);
+						INFECTION_FILTER="--filter=${CHANGED_FILES} --ignore-msi-with-no-mutations";
+						infection --threads=4 $INFECTION_FILTER
 					</code></pre>
-				</section>
-
-
-				<section data-auto-animate>
-					<pre data-id="code-animation"><code class="php" data-trim data-line-numbers="|5-8|10-13">
-public function testIsDangerousProperties(): void
-{
-  $nuclearReactor = new NuclearReactor();
-
-  $this->forAll(Generator\choose(0, 999))
-    ->then(function (int $temp) use ($nuclearReactor) {
-      $this->assertFalse($nuclearReactor->isDangerous($temp));
-    });
-
-  $this->forAll(Generator\choose(1000, 99999))
-    ->then(function (int $temp) use ($nuclearReactor) {
-      $this->assertTrue($nuclearReactor->isDangerous($temp));
-    });
-}
-					</code></pre>
-					<small>
-						<a href="https://github.com/giorgiosironi/eris" target="_blank">https://github.com/giorgiosironi/eris</a>
+					<small class="fragment">
+						<a href="https://infection.github.io/guide/how-to.html" target="_blank">https://infection.github.io/guide/how-to.html</a>
 					</small>
 				</section>
 
@@ -413,6 +375,17 @@ public function testIsDangerousProperties(): void
 					<p class="fragment">Monitor</p>
 					<p class="fragment">Take <span class="fragment highlight-red">educated</span> risks!</p>
 					<p class="fragment">Learn from failures</p>
+				</section>
+
+				<section>
+					<h3>Why automated tests are important?</h3>
+					Go to menti.com and use the code 6074 4568 </br>
+					OR scan</br>
+					<img src="img/qr2.png" width="200"> 
+				</section>
+
+				<section>
+					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/embed/df7d9a563cd5bbc4f3c13e3daa23a500/161f7877edf2' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 				</section>
 
 				<section>
