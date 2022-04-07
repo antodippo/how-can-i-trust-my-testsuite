@@ -37,6 +37,7 @@
 					<small>Software engineer</small></br>
 					<img src="img/mollie.png">
 					<p>@antodippo</p>
+					<p id="heartrate"></p>
 				</section>
 
 				<section>
@@ -399,6 +400,14 @@ class NuclearReactorTest extends TestCase
 		<script src="plugin/highlight/highlight.js"></script>
 		<script src="plugin/math/math.js"></script>
 		<script>
+			function updateHeartRate() {
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open("GET", "https://heartrate-server.herokuapp.com/heartrate", false);
+				xmlHttp.send(null);
+				document.getElementById("heartrate").innerHTML = '❤️ ' + xmlHttp.responseText;
+			}
+			setInterval(updateHeartRate, 1000);
+
 			Reveal.initialize({
 				hash: true,
 				math: {
@@ -413,8 +422,11 @@ class NuclearReactorTest extends TestCase
 					{ 
 						src: 'plugin/title-footer/title-footer.js', 
 						async: true, 
-						callback: function() 
-						{ title_footer.initialize('How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo'); } 
+						callback: function() { 
+							title_footer.initialize(
+								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo'
+							); 
+						}
 					}
 				]
 			});
