@@ -416,7 +416,7 @@ class NuclearReactorTest extends TestCase
 				xmlHttp.send(null);
 				document.getElementById("heartrate").innerHTML = '❤️ ' + xmlHttp.responseText;
 			}
-			setInterval(updateHeartRate, 1000);
+			setInterval(updateHeartRate, 5000);
 
 			Reveal.initialize({
 				hash: true,
