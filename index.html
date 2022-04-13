@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/beige.css" id="theme">
 		<link rel="stylesheet" href="plugin/title-footer/title-footer.css">
 
 		<!-- Theme used for syntax highlighted code -->
@@ -19,8 +19,9 @@
 			<div class="slides">
 				
 				<section>
-					<h2>How can I trust<br/>my testsuite?</h2>
+					<h2>How can I trust my testsuite?</h2>
 					<h5>Antonello D'Ippolito</h5>
+					<small>MollieCon 2022</small>
 				</section>
 
 				<section data-auto-animate>
@@ -32,12 +33,22 @@
 				</section>
 
 				<section>
-					<h2>CIAO!</h2>
-					<h3>Antonello D'Ippolito</h3>
-					<small>Software engineer</small></br>
-					<img src="img/mollie.png">
-					<p>@antodippo</p>
-					<p id="heartrate"></p>
+					<style>
+						.container{ display: flex; }
+						.col{ flex: 1; }
+					</style>
+					<div class="container">
+						<div class="col">
+							<img height="400px" src="img/connect.png">
+						</div>					
+						<div class="col" style="text-align: left;">
+							<h2>CIAO!</h2>
+							<h3>Antonello D'Ippolito</h3>
+							<small>Software engineer</small></br>
+							<p>@antodippo</p>
+							<p id="heartrate"></p>
+						</div>
+					</div>
 				</section>
 
 				<section>
@@ -377,15 +388,14 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section data-auto-animate>
-					<h2>THANKS!</h2>
-					<img width="250px" src="img/twitter-qr.png"><br/>
+					<h1>THANKS!</h1>
 					<small>
 						<a>Antonello D'Ippolito</a> | 
 						<a href="https://twitter.com/antodippo" target="_blaak">twitter.com/antodippo</a> | 
 						<a href="https://antodippo.com" target="_blaak">antodippo.com</a>
 					</small>
 					<small>
-						Try Infection, Eris and other testing tools here:<br/>
+						Try Infection and other testing tools here:<br/>
 						<a href="https://github.com/antodippo/php-testing-playground" target="_blaak">
 							https://github.com/antodippo/php-testing-playground</a>
 					</small>
@@ -424,7 +434,7 @@ class NuclearReactorTest extends TestCase
 						async: true, 
 						callback: function() { 
 							title_footer.initialize(
-								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo'
+								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo | MollieCon 2022'
 							); 
 						}
 					}
