@@ -74,10 +74,10 @@ class NuclearReactor
   public function isDangerous(int $temperature): bool
   {
     if ($temperature >= 1000) {
-	  return true;
-    } else {
-	  return false;
+      return true;
     }
+	  
+    return false;
   }
 }
 					</code></pre>
@@ -105,10 +105,10 @@ class NuclearReactor
   public function isDangerous(int $temperature): bool
   {
     if ($temperature > 1000) {
-	  return true;
-    } else {
-	  return false;
+      return true;
     }
+	
+    return false;
   }
 }
 					</code></pre>
@@ -135,10 +135,6 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section data-background="img/explosion.gif"></section>
-
-				<section>
-					<img src="img/kent.png">
-				</section>
 
 				<section>
 					A lot of the value of code coverage data is to highlight not what’s covered, but what’s <b>not</b> covered.
@@ -189,6 +185,10 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
+					<img src="img/kent.png">
+				</section>
+
+				<section>
 					<img class="r-stretch" src="img/sherlock.png">
 					<blockquote cite="">Not all the units of code</br>are equally important</blockquote>
 				</section>
@@ -233,6 +233,24 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
+					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
+						<iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' 
+						frameborder='0' height='315' src='https://www.mentimeter.com/embed/e4ae32ee386bc8e71d62602b5fe0149e/9901c2896f02' 
+						style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'>
+						</iframe>
+					</div>
+				</section>
+
+				<section>
+					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
+						<iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' 
+						frameborder='0' height='315' src='https://www.mentimeter.com/embed/e4ae32ee386bc8e71d62602b5fe0149e/edde9ce0982b' 
+						style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'>
+						</iframe>
+					</div>
+				</section>
+
+				<section>
 					<ul>
 						<li> Create a <b>mutant</b>
 						<li> If a test fails -> <b><span style="color:green">mutant killed</span></b>
@@ -247,10 +265,10 @@ class NuclearReactor
   public function isDangerous(int $temperature): bool
   {
     if ($temperature >= 1000) {
-	  return true;
-    } else {
-	  return false;
+      return true;
     }
+	
+    return false;
   }
 }
 					</code></pre>
@@ -263,10 +281,10 @@ class NuclearReactor
   public function isDangerous(int $temperature): bool
   {
     if ($temperature > 1000) {
-	  return true;
-    } else {
-	  return false;
+      return true;
     }
+ 
+    return false;
   }
 }
 					</code></pre>
@@ -281,7 +299,8 @@ class NuclearReactor
 				<section data-auto-animate>
 					<img width="300" src="img/phpunit.png"> <br/>
 					<img width="300" src="img/phpspec.png"> <br/>
-					<img width="400" src="img/codeception.png">
+					<img width="400" src="img/codeception.png"> <br/>
+					<img width="300" src="img/pest.png">
 				</section>
 
 				<section>
@@ -324,16 +343,6 @@ class NuclearReactorTest extends TestCase
 					</code></pre>
 					<small><a href="https://github.com/antodippo/php-testing-playground" target="_blaak">
 						https://github.com/antodippo/php-testing-playground</a></small>
-				</section>
-
-				<section>
-					<iframe width="800" height="600"
-						data-src="https://infection.github.io/guide/mutators.html" 
-						data-preload>
-					</iframe>
-					<small>
-						<a href="https://infection.github.io/guide/mutators.html" target="_blank">https://infection.github.io/guide/mutators.html</a>
-					</small>
 				</section>
 
 				<section>
@@ -381,10 +390,14 @@ class NuclearReactorTest extends TestCase
 
 				<section>
 					<h3>Tools are never the final answer!</h3>
-					<p class="fragment">Ship frequently</p>
+					<p class="fragment">Release frequently</p>
 					<p class="fragment">Monitor</p>
 					<p class="fragment">Take <span class="fragment highlight-red">educated</span> risks!</p>
 					<p class="fragment">Learn from failures</p>
+				</section>
+
+				<section>
+					<img class="r-stretch" src="img/sheepit.gif">
 				</section>
 
 				<section data-auto-animate>
