@@ -185,12 +185,12 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
-					<img src="img/kent.png">
+					<img class="r-stretch" src="img/sherlock.png">
+					<blockquote cite="">Not all the units of code</br>are equally important</blockquote>
 				</section>
 
 				<section>
-					<img class="r-stretch" src="img/sherlock.png">
-					<blockquote cite="">Not all the units of code</br>are equally important</blockquote>
+					<img src="img/kent.png">
 				</section>
 
 				<section>
@@ -221,6 +221,55 @@ class NuclearReactorTest extends TestCase
 						Better, but it's still about coverage,</br>
 						not the <b>quality</b> of the tests
 					</blockquote>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-trim>
+class NuclearReactor
+{
+  public function __construct(
+    private TemperatureSensor $sensor
+  ) {}
+
+  public function isDangerous(): bool
+  {
+    if ($this->sensor->currentTemperature() >= 1000) {
+      return true;
+    }	
+		
+    return false;
+  }
+}
+					</code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<pre data-id="code-animation"><code class="php" data-trim>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerousWithMock(): void
+  {
+    $sensor = $this->createMock(TemperatureSensor::class);
+    $sensor->method('currentTemperature')->willReturn(2000);
+
+    $nuclearReactor = new NuclearReactor($sensor);
+    $this->assertTrue($nuclearReactor->isDangerous());
+  }
+}
+					</code></pre>
+
+					<pre data-id="code-animation"><code class="php" data-trim>
+class NuclearReactorTest extends TestCase
+{
+  public function testIsDangerousWithoutMocks(): void
+  {
+    $sensor = new FakeTemperatureSensor(2000);
+
+    $nuclearReactor = new NuclearReactor($sensor);
+    $this->assertTrue($nuclearReactor->isDangerous());
+  }
+}
+					</code></pre>
 				</section>
 
 				<section>
@@ -372,15 +421,7 @@ class NuclearReactorTest extends TestCase
 					<h3>How to use it?</h3>
 					<p class="fragment">To assess the effectivness of a testsuite!</p>
 					<p class="fragment">Setting a minimum MSI in pipeline</p>
-					<p class="fragment">While developing, on a small scope</p>
-					<pre class="fragment" data-id="code-animation"><code class="php" data-trim>
-						CHANGED_FILES=$(git diff origin/master --diff-filter=AM --name-only | grep src/ | paste -sd "," -);
-						INFECTION_FILTER="--filter=${CHANGED_FILES} --ignore-msi-with-no-mutations";
-						infection --threads=4 $INFECTION_FILTER
-					</code></pre>
-					<small class="fragment">
-						<a href="https://infection.github.io/guide/how-to.html" target="_blank">https://infection.github.io/guide/how-to.html</a>
-					</small>
+					<p class="fragment">While developing a new feature, on a small scope</p>
 				</section>
 
 				<section>
