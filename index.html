@@ -223,6 +223,10 @@ class NuclearReactorTest extends TestCase
 					</blockquote>
 				</section>
 
+				<section>
+					<p>Mock frameworks</p>
+				</section>
+
 				<section data-auto-animate>
 					<pre data-id="code-animation"><code class="php" data-trim>
 class NuclearReactor
@@ -250,7 +254,9 @@ class NuclearReactorTest extends TestCase
   public function testIsDangerousWithMock(): void
   {
     $sensor = $this->createMock(TemperatureSensor::class);
-    $sensor->method('currentTemperature')->willReturn(2000);
+    $sensor->expects($this->once())
+      ->method('currentTemperature')
+      ->willReturn(2000);
 
     $nuclearReactor = new NuclearReactor($sensor);
     $this->assertTrue($nuclearReactor->isDangerous());
