@@ -21,7 +21,7 @@
 				<section>
 					<h2>How can I trust my testsuite?</h2>
 					<h5>Antonello D'Ippolito</h5>
-					<small>MollieCon 2022</small>
+					<small>PUG Milano, 22/2/23</small>
 				</section>
 
 				<section data-auto-animate>
@@ -167,6 +167,13 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
+						High cyclomatic complexity means:
+						<li class="fragment">code is hard to understand</li>					
+						<li class="fragment">code is hard to test properly</li>
+						<li class="fragment">therefore code is hard to change</li>
+				</section>
+
+				<section>
 					<h3>CRAP index</h3>
 					<p>
 						\begin{align}
@@ -224,8 +231,16 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
-					<p>Mock frameworks</p>
+					<h2>Avoid mocking frameworks<br/>and testing implementation</h2>
+					<p><a target="_blank" href="https://www.jamesshore.com/v2/projects/testing-without-mocks/testing-without-mocks#state-based-tests">
+						James Shore - Testing without mocks
+					</a></p>
 				</section>
+
+				<section>
+					<p>Mocks<br/>vs<br/>Mocking frameworks<br/>vs<br/>Test doubles</p>
+				</section>
+
 
 				<section data-auto-animate>
 					<pre data-id="code-animation"><code class="php" data-trim>
@@ -284,22 +299,13 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section>
-					If you make a change that alters the meaning of the code, will one of your tests detect it?
+					If you make a change that alters the meaning of your code, will one of your tests detect it?
 				</section>
 
 				<section>
 					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
 						<iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' 
-						frameborder='0' height='315' src='https://www.mentimeter.com/embed/e4ae32ee386bc8e71d62602b5fe0149e/9901c2896f02' 
-						style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'>
-						</iframe>
-					</div>
-				</section>
-
-				<section>
-					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
-						<iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' 
-						frameborder='0' height='315' src='https://www.mentimeter.com/embed/e4ae32ee386bc8e71d62602b5fe0149e/edde9ce0982b' 
+						frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/al5ajgit5w1c6y3kea5dg6rtv6wwxo1i/onhpjns76has' 
 						style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'>
 						</iframe>
 					</div>
@@ -414,13 +420,17 @@ class NuclearReactorTest extends TestCase
 							<td width="450" style="font-size: 27px;">
 								<h3>CONS</h3>
 								<ul>
-									<li class="fragment">Slower than other testing tools</li>
 									<li class="fragment">Can't merge different tools results</li>
 									<li class="fragment">Some mutants are harmless</li>
+									<li class="fragment">Slower than other testing tools</li>
 								</ul>
 							</td>
 						</tr>
 					</table>
+				</section>
+
+				<section>
+					<img src="img/mutation-long-time.png">
 				</section>
 
 				<section>
@@ -494,7 +504,7 @@ class NuclearReactorTest extends TestCase
 						async: true, 
 						callback: function() { 
 							title_footer.initialize(
-								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo | MollieCon 2022'
+								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo | PUG Milano 22/2/23'
 							); 
 						}
 					}
