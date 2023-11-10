@@ -20,8 +20,7 @@
 				
 				<section>
 					<h2>How can I trust my testsuite?</h2>
-					<h5>Antonello D'Ippolito</h5>
-					<small>Targeting Quality, 19/9/23</small>
+					<small>Antonello D'Ippolito - PHPCon Poland 2023</small>
 				</section>
 
 				<section data-auto-animate>
@@ -33,23 +32,12 @@
 				</section>
 
 				<section>
-					<style>
-						.container{ display: flex; }
-						.col{ flex: 1; }
-					</style>
-					<div class="container">
-						<div class="col">
-							<img src="img/mollie.png">
-							<img height="300px" src="img/connect.png">
-						</div>					
-						<div class="col" style="text-align: left;">
-							<br/>
-							<h2>CIAO!</h2>
-							<h3>Antonello D'Ippolito</h3>
-							<small>Software engineer</small>
-							<p>@antodippo</p>
-							<p id="heartrate"></p>
-						</div>
+					<div >
+						<br/>
+						<p>🇮🇹 CIAO! 🤌</p>
+						<h3>Antonello D'Ippolito</h3>
+						<small>Software engineer @ Mollie 🇳🇱</small>
+						<p>@antodippo</p>
 					</div>
 				</section>
 
@@ -439,13 +427,15 @@ class NuclearReactorTest extends TestCase
 				</section>
 
 				<section data-auto-animate>
-					<h1>THANK YOU!</h1>
+					<h3>Dziękuję! 🇵🇱</h3>
 					<small>
 						<a href="https://twitter.com/antodippo" target="_blaak">Twitter: @antodippo</a> | 
 						<a href="https://fosstodon.org/@antodippo" target="_blaak">Mastodon: @antodippo</a> | 
 						<a href="https://antodippo.com" target="_blaak">antodippo.com</a>
-				
 					</small>
+					<aside class="notes">Gencuie</aside>
+					<br/>
+					<img src="img/qr-phpconpl.png" width="300px">
 				</section>
 
 			</div>
@@ -457,14 +447,6 @@ class NuclearReactorTest extends TestCase
 		<script src="plugin/highlight/highlight.js"></script>
 		<script src="plugin/math/math.js"></script>
 		<script>
-			function updateHeartRate() {
-				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.open("GET", "https://heartrate-server.herokuapp.com/heartrate", false);
-				xmlHttp.send(null);
-				document.getElementById("heartrate").innerHTML = '❤️ ' + xmlHttp.responseText;
-			}
-			setInterval(updateHeartRate, 5000);
-
 			Reveal.initialize({
 				hash: true,
 				math: {
@@ -481,7 +463,7 @@ class NuclearReactorTest extends TestCase
 						async: true, 
 						callback: function() { 
 							title_footer.initialize(
-								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo | Targeting Quality, 19/9/23'
+								'How can I trust my testsuite? | Antonello D\'Ippolito | @antodippo | PHPCon Poland 2023'
 							); 
 						}
 					}
